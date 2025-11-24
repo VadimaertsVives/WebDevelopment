@@ -1,0 +1,11 @@
+body {
+    display: flex;
+    gap: 20px;
+}
+
+.kolom {
+    width: 50%;
+    box-sizing: border-box;
+    border: 1px solid black;
+    margin: 10px;
+}

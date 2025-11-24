@@ -1,0 +1,35 @@
+.kalender {
+    border-collapse: collapse;
+    width: 80%;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.kalender td, .kalender th {
+    font-size: 18px;
+    padding: 10px;
+}
+
+
+.kalender .maand th {
+    background-color: rgb(170,170,200);
+    font-size: 20px;
+    padding: 10px;
+}
+
+.kalender .dagen th {
+    background-color: rgb(35,37,70);
+    color: rgb(200,190,240);
+}
+
+.andere {
+    background-color: #ccc;
+    color: #555;
+}
+
+.feest {
+    background-color: rgb(250,120,120) !important;
+}
+
