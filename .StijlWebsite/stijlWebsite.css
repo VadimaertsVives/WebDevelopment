@@ -1,0 +1,51 @@
+/* Algemene layout */
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f5f7fa;
+    color: #333;
+    margin: 0;
+    padding: 40px;
+    line-height: 1.6;
+}
+
+/* Titels */
+h1 {
+    text-align: center;
+    font-size: 2.6rem;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+h2 {
+    margin-top: 40px;
+    color: #34495e;
+    border-left: 6px solid #3498db;
+    padding-left: 10px;
+}
+
+/* Lijsten */
+ol {
+    background: white;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    max-width: 500px;
+}
+
+/* Links */
+a {
+    text-decoration: none;
+    color: #2980b9;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+a:hover {
+    color: #1c6691;
+    text-decoration: underline;
+}
+
+/* Items */
+li {
+    margin: 6px 0;
+}
