@@ -1,274 +1,359 @@
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Sora:wght@300;400;500;600&display=swap');
 
-/* ── Root & Reset ─────────────────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
 :root {
-    --bg:        #0a0a0f;
-    --surface:   #111118;
-    --border:    #1e1e2e;
-    --accent1:   #7c3aed;
-    --accent2:   #06b6d4;
-    --accent3:   #f59e0b;
-    --text:      #e2e8f0;
-    --muted:     #64748b;
-    --sem1:      #7c3aed;
-    --sem2:      #06b6d4;
-    --radius:    10px;
+    --bg: #0d0f14;
+    --surface: #13161e;
+    --surface-2: #1a1e29;
+    --border: rgba(255,255,255,0.07);
+    --border-hover: rgba(255,255,255,0.15);
+
+    --text-primary: #eceef5;
+    --text-secondary: #8a8fa8;
+    --text-muted: #555b70;
+
+    --accent-sem1: #5b8af7;
+    --accent-sem1-glow: rgba(91,138,247,0.15);
+    --accent-sem2: #5ecba1;
+    --accent-sem2-glow: rgba(94,203,161,0.15);
+
+    --accent-num: #d4a85a;
+
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+
+    --font-display: 'DM Serif Display', Georgia, serif;
+    --font-body: 'Sora', sans-serif;
+    --font-mono: 'DM Mono', monospace;
 }
 
-/* ── Body ─────────────────────────────────────────────────── */
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: var(--bg);
-    background-image:
-            radial-gradient(ellipse 80% 50% at 20% -10%, rgba(124, 58, 237, 0.18) 0%, transparent 60%),
-            radial-gradient(ellipse 60% 40% at 80% 110%, rgba(6, 182, 212, 0.14) 0%, transparent 55%);
-    color: var(--text);
-    font-family: 'Space Mono', monospace;
-    font-size: 14px;
-    line-height: 1.7;
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.6;
     min-height: 100vh;
-    padding: 3rem 2rem 6rem;
+    padding: 0;
 }
 
-/* ── H1 ───────────────────────────────────────────────────── */
+/* ── PAGE HEADER ── */
+
 h1 {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(2.4rem, 6vw, 5rem);
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    line-height: 1;
-    margin-bottom: 3.5rem;
-    background: linear-gradient(135deg, #fff 30%, var(--accent1) 70%, var(--accent2));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    text-align: center;
+    padding: 4rem 2rem 1.5rem;
     position: relative;
-    display: inline-block;
 }
 
 h1::after {
     content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 0;
-    width: 60%;
-    height: 2px;
-    background: linear-gradient(90deg, var(--accent1), var(--accent2), transparent);
+    display: block;
+    width: 48px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-sem1), var(--accent-sem2));
+    border-radius: 2px;
+    margin: 1rem auto 0;
 }
 
-/* ── Semester divs ────────────────────────────────────────── */
-.sem1, .sem2 {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 1rem;
-    align-items: start;
-    margin-bottom: 4rem;
+/* ── SEMESTER WRAPPERS ── */
+
+.sem1,
+.sem2 {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem 4rem;
 }
 
-/* semester label spans full width */
-.semester {
-    grid-column: 1 / -1;
-    font-family: 'Syne', sans-serif;
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.25em;
+.sem1 {
+    --accent: var(--accent-sem1);
+    --accent-glow: var(--accent-sem1-glow);
+}
+
+.sem2 {
+    --accent: var(--accent-sem2);
+    --accent-glow: var(--accent-sem2-glow);
+}
+
+/* ── SEMESTER LABEL ── */
+
+p.semester {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    padding: 0.35rem 0.85rem;
-    border-radius: 999px;
-    display: inline-flex;
+    color: var(--accent);
+    display: flex;
     align-items: center;
-    gap: 0.5rem;
-    width: fit-content;
-    margin-bottom: 0.5rem;
+    gap: 12px;
+    margin-bottom: 2rem;
+    padding-top: 1rem;
 }
 
-.semester::before {
+p.semester::before {
     content: '';
-    width: 7px; height: 7px;
-    border-radius: 50%;
-    animation: pulse 2s ease-in-out infinite;
+    display: inline-block;
+    width: 28px;
+    height: 1.5px;
+    background: var(--accent);
+    border-radius: 2px;
+    flex-shrink: 0;
 }
 
-.sem1 .semester {
-    color: var(--sem1);
-    background: rgba(124, 58, 237, 0.1);
-    border: 1px solid rgba(124, 58, 237, 0.3);
-}
-.sem1 .semester::before { background: var(--sem1); box-shadow: 0 0 6px var(--sem1); }
-
-.sem2 .semester {
-    color: var(--sem2);
-    background: rgba(6, 182, 212, 0.1);
-    border: 1px solid rgba(6, 182, 212, 0.3);
-}
-.sem2 .semester::before { background: var(--sem2); box-shadow: 0 0 6px var(--sem2); }
-
-/* ── Lab cards (h2) ───────────────────────────────────────── */
-h2 {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 0.75rem;
-    padding: 1.2rem 1.2rem 0;
+p.semester::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
 }
 
-/* Each h2 + list = one card */
-h2, ol, ul {
+/* ── LABO GRID ── */
+
+.sem1,
+.sem2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1px;
+    position: relative;
+}
+
+p.semester {
+    grid-column: 1 / -1;
+}
+
+/* ── LABO CARD ── */
+
+.labo {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: var(--radius);
-}
-
-/* Weld h2 and its following ol together */
-h2 {
-    border-bottom: none;
-    border-radius: var(--radius) var(--radius) 0 0;
-    padding-bottom: 0;
-    margin-bottom: 0;
-}
-
-h2 + ol,
-h2 + ul {
-    border-top: none;
-    border-radius: 0 0 var(--radius) var(--radius);
-    padding: 0.6rem 1.2rem 1.2rem;
-    transition: border-color 0.25s;
-}
-
-h2 + ol:hover,
-h2 + ul:hover {
-    border-color: var(--accent1);
-}
-
-.sem2 h2 + ol:hover,
-.sem2 h2 + ul:hover {
-    border-color: var(--accent2);
-}
-
-h2:has(+ ol:hover),
-h2:has(+ ul:hover) {
-    border-color: var(--accent1);
-}
-
-.sem2 h2:has(+ ol:hover),
-.sem2 h2:has(+ ul:hover) {
-    border-color: var(--accent2);
-}
-
-/* ── Lists ────────────────────────────────────────────────── */
-ol, ul {
-    list-style: none;
-    background: transparent;
-    border: none !important;
-    padding: 0;
-    margin: 0;
-}
-
-h2 + ol,
-h2 + ul {
-    background: var(--surface);
-    border: 1px solid var(--border) !important;
-}
-
-li {
+    border-radius: var(--radius-lg);
+    padding: 1.5rem 1.75rem;
     position: relative;
-    padding: 0.3rem 0 0.3rem 1.1rem;
-    color: var(--muted);
-    font-size: 0.82rem;
-    transition: color 0.2s;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    overflow: hidden;
 }
 
-li::before {
-    content: '›';
-    position: absolute;
-    left: 0;
-    color: var(--border);
-    transition: color 0.2s, transform 0.2s;
-}
-
-li:hover::before {
-    color: var(--accent3);
-    transform: translateX(3px);
-}
-
-li:hover { color: var(--text); }
-
-/* nested ul inside li */
-li > ul {
-    margin: 0.3rem 0 0.2rem 0.6rem;
-    border-left: 1px solid var(--border) !important;
-    padding-left: 0.8rem;
-    border-radius: 0 !important;
-}
-
-/* ── Links ────────────────────────────────────────────────── */
-a {
-    color: inherit;
-    text-decoration: none;
-    position: relative;
-    transition: color 0.2s;
-}
-
-a::after {
+.labo::before {
     content: '';
     position: absolute;
-    bottom: -1px;
+    top: 0;
     left: 0;
-    width: 0;
-    height: 1px;
-    background: var(--accent2);
-    transition: width 0.25s ease;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
-a:hover { color: var(--text); }
-a:hover::after { width: 100%; }
-
-.sem1 a:hover::after { background: var(--accent1); }
-.sem2 a:hover::after { background: var(--accent2); }
-
-/* ── Animations ───────────────────────────────────────────── */
-@keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50%       { opacity: 0.5; transform: scale(0.7); }
+.labo:hover {
+    border-color: var(--border-hover);
+    background: var(--surface-2);
 }
 
-/* staggered fade-in for cards */
-.sem1 > *, .sem2 > * {
-    animation: fadeUp 0.5s ease both;
+.labo:hover::before {
+    opacity: 1;
 }
 
-@keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to   { opacity: 1; transform: translateY(0); }
+/* ── LABO HEADINGS ── */
+
+h2 {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: var(--text-primary);
+    margin-bottom: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.sem1 > *:nth-child(1)  { animation-delay: 0.04s; }
-.sem1 > *:nth-child(2)  { animation-delay: 0.08s; }
-.sem1 > *:nth-child(3)  { animation-delay: 0.12s; }
-.sem1 > *:nth-child(4)  { animation-delay: 0.16s; }
-.sem1 > *:nth-child(5)  { animation-delay: 0.20s; }
-.sem1 > *:nth-child(6)  { animation-delay: 0.24s; }
-.sem1 > *:nth-child(7)  { animation-delay: 0.28s; }
-.sem1 > *:nth-child(8)  { animation-delay: 0.32s; }
-.sem1 > *:nth-child(9)  { animation-delay: 0.36s; }
-.sem1 > *:nth-child(10) { animation-delay: 0.40s; }
-.sem1 > *:nth-child(11) { animation-delay: 0.44s; }
-.sem1 > *:nth-child(12) { animation-delay: 0.48s; }
-.sem2 > *:nth-child(1)  { animation-delay: 0.04s; }
-.sem2 > *:nth-child(2)  { animation-delay: 0.08s; }
-.sem2 > *:nth-child(3)  { animation-delay: 0.12s; }
-.sem2 > *:nth-child(4)  { animation-delay: 0.16s; }
-.sem2 > *:nth-child(5)  { animation-delay: 0.20s; }
-.sem2 > *:nth-child(6)  { animation-delay: 0.24s; }
-.sem2 > *:nth-child(7)  { animation-delay: 0.28s; }
-.sem2 > *:nth-child(8)  { animation-delay: 0.32s; }
+h2::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+    box-shadow: 0 0 10px var(--accent);
+}
 
-/* ── Scrollbar ────────────────────────────────────────────── */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: var(--accent1); }
+/* ── LISTS ── */
+
+ol {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    counter-reset: labo-counter;
+}
+
+ol > li {
+    counter-increment: labo-counter;
+    position: relative;
+}
+
+ul {
+    list-style: none;
+    padding: 0 0 0 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 2px;
+}
+
+/* ── LINKS ── */
+
+a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 13.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    border-radius: var(--radius-sm);
+    transition: color 0.15s ease, background 0.15s ease, padding-left 0.15s ease;
+    position: relative;
+    line-height: 1.4;
+}
+
+ol > li > a::before {
+    content: counter(labo-counter, decimal-leading-zero);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--accent-num);
+    flex-shrink: 0;
+    min-width: 20px;
+    opacity: 0.7;
+    transition: opacity 0.15s ease;
+}
+
+ul li a::before {
+    content: '›';
+    color: var(--accent);
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+a:hover {
+    color: var(--text-primary);
+    background: var(--accent-glow);
+    padding-left: 14px;
+}
+
+a:hover::before {
+    opacity: 1;
+}
+
+/* Sub-item labels (li that contains a ul) */
+
+ol > li > span,
+ol > li > a + ul,
+ol > li:not(:has(> a)) {
+    padding: 5px 10px;
+    font-size: 13px;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    letter-spacing: 0.04em;
+    display: block;
+}
+
+ol > li:not(:has(a)):not(:has(ul)) {
+    color: var(--text-muted);
+    font-size: 13px;
+    padding: 5px 10px;
+}
+
+/* ── SUB-LIST LABEL (li that has both text + ul) ── */
+li:has(> ul) {
+    padding: 4px 0 0 0;
+}
+
+li:has(> ul) > *:first-child:not(ul):not(a) {
+    display: block;
+    font-size: 12px;
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 6px 10px 2px;
+}
+
+/* Handle text nodes in li with nested ul */
+li:has(> ul) {
+    font-size: 12px;
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 6px 0 2px 10px;
+}
+
+/* ── DIVIDER BETWEEN SEMESTERS ── */
+
+.sem1 + .sem2 {
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid var(--border);
+}
+
+/* ── SCROLLBAR ── */
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--surface-2);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--border-hover);
+}
+
+/* ── SELECTION ── */
+
+::selection {
+    background: var(--accent-sem1-glow);
+    color: var(--text-primary);
+}
+
+/* ── RESPONSIVE ── */
+
+@media (max-width: 600px) {
+    h1 {
+        padding: 3rem 1.5rem 1rem;
+    }
+
+    .sem1,
+    .sem2 {
+        padding: 0 1rem 3rem;
+        grid-template-columns: 1fr;
+    }
+
+    .labo {
+        padding: 1.25rem 1.25rem;
+    }
+}
