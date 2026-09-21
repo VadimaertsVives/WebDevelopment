@@ -1,14 +1,13 @@
 const setup = () => {
     let btnKopieer = document.getElementById("btnKopieer");
-    btnKopieer.addEventListener("click", kopieer);
+    btnKopieer.addEventListener("click", kopieerTekst);
 }
 
-const kopieer = () => {
-    let txtInput = document.getElementById("txtInput");
-    let tekst = txtInput.value;
+const kopieerTekst = () => {
+    let input = document.getElementById("txtInput").value;
+    let output = document.getElementById("txtOutput");
 
-    let txtOutput = document.getElementById("txtOutput");
-    txtOutput.innerHTML = tekst;
+    output.innerText = input;
 }
 
-window.addEventListener("load", setup);
+window.addEventListener('load', setup);

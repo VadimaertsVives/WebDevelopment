@@ -1,11 +1,11 @@
 const setup = () => {
     let knop = document.getElementById("btnWijzig");
-    knop.addEventListener("click", wijzigTekst);
+    knop.addEventListener("click", wijzig);
 }
 
-const wijzigTekst = () => {
-    let pElement = document.getElementById("txtOutput");
-    pElement.innerHTML = "Welkom!";
+const wijzig = () => {
+    let tekst = document.getElementById("txtOutput");
+    tekst.innerHTML = "Welkom!";
 }
 
 window.addEventListener("load", setup);

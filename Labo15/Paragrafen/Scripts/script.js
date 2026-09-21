@@ -1,7 +1,7 @@
 const setup = () => {
-    let elementen = document.getElementsByClassName("belangrijk");
+    let paragrafen = document.getElementsByClassName("belangrijk");
 
-    for (let el of elementen) {
+    for (let el of paragrafen) {
         el.className += " opvallend";
     }
 }
